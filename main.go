@@ -79,5 +79,6 @@ var wasmQueryCSSForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value
 var disableLibrary js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 	wasmQuery.Release()
 	wasmQueryCSS.Release()
+	wasmQueryCSSForArray.Release()
 	return nil
 })
