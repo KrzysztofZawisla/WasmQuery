@@ -24,6 +24,8 @@ To setup CSS propertie
 $("h1")[0].css("color", "fuchsia");
 $("#id").css("color", "fuchsia");
 $(".class")[0].css("color", "fuchsia");
+$("h1").css("color", "fuchsia")
+$(".class").css("color", "fuchsia")
 ```
 To disable library and release memory
 ```js
