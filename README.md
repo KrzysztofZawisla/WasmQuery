@@ -1,5 +1,5 @@
 # WasmQuery
-Experimental jQuery like library written in Go
+Experimental jQuery like library written in Go. Available from JavaScript by WebAssembly module.
 
 ## Syntax
 General syntax  
