@@ -33,6 +33,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			for i := 0; i < returnValue.Length(); i++ {
 				returnValue.Index(i).Set("css", wasmQueryCSS)
 			}
+			returnValue.Set("css", wasmQueryCSSForArray)
 			return returnValue
 		}
 	} else {
@@ -40,6 +41,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 		for i := 0; i < returnValue.Length(); i++ {
 			returnValue.Index(i).Set("css", wasmQueryCSS)
 		}
+		returnValue.Set("css", wasmQueryCSSForArray)
 		return returnValue
 	}
 	return nil
@@ -56,6 +58,20 @@ var wasmQueryCSS js.Func = js.FuncOf(func(this js.Value, args []js.Value) interf
 		var value string = args[1].String()
 		this.Get("style").Set(selector, value)
 		return this.Get("style").Get(selector)
+	}
+	return nil
+})
+
+var wasmQueryCSSForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	if len(args) == 0 {
+		return nil
+	}
+	var selector string = args[0].String()
+	if len(args) >= 2 {
+		var value string = args[1].String()
+		for i := 0; i < this.Length(); i++ {
+			this.Index(i).Get("style").Set(selector, value)
+		}
 	}
 	return nil
 })
