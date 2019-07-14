@@ -27,21 +27,26 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 		if string(domSelector[0]) == "#" {
 			returnValue := js.Global().Get("document").Call("getElementById", selectorWithoutSymbol)
 			returnValue.Set("css", wasmQueryCSS)
+			returnValue.Set("hide", wasmQueryHide)
 			return returnValue
 		} else if string(domSelector[0]) == "." {
 			returnValue := js.Global().Get("document").Call("getElementsByClassName", selectorWithoutSymbol)
 			for i := 0; i < returnValue.Length(); i++ {
 				returnValue.Index(i).Set("css", wasmQueryCSS)
+				returnValue.Index(i).Set("hide", wasmQueryHide)
 			}
 			returnValue.Set("css", wasmQueryCSSForArray)
+			returnValue.Set("hide", wasmQueryHideForArray)
 			return returnValue
 		}
 	} else {
 		returnValue := js.Global().Get("document").Call("getElementsByTagName", domSelector)
 		for i := 0; i < returnValue.Length(); i++ {
 			returnValue.Index(i).Set("css", wasmQueryCSS)
+			returnValue.Index(i).Set("hide", wasmQueryHide)
 		}
 		returnValue.Set("css", wasmQueryCSSForArray)
+		returnValue.Set("hide", wasmQueryHideForArray)
 		return returnValue
 	}
 	return nil
@@ -84,6 +89,21 @@ var wasmQueryCSSForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value
 		return outputArray
 	}
 	return nil
+})
+
+var wasmQueryHide js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	this.Get("style").Set("display", "none")
+	return this.Get("style").Get("display")
+})
+
+var wasmQueryHideForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	var outputArray []interface{}
+	for i := 0; i < this.Length(); i++ {
+		this.Index(i).Get("style").Set("display", "none")
+		valueOfIteration := this.Index(i).Get("style").Get("display")
+		outputArray = append(outputArray, valueOfIteration)
+	}
+	return outputArray
 })
 
 var disableLibrary js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
