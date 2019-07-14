@@ -37,13 +37,29 @@ $(".class")[0].hide();
 $("h1").hide();
 $(".class").hide();
 ```
-To show as block DOM elements
+To show DOM elements as block 
 ```js
 $("h1")[0].showAsBlock();
 $("#id").showAsBlock();
 $(".class")[0].showAsBlock();
 $("h1").showAsBlock();
 $(".class").showAsBlock();
+```
+To show DOM elements as inline 
+```js
+$("h1")[0].showAsInline();
+$("#id").showAsInline();
+$(".class")[0].showAsInline();
+$("h1").showAsInline();
+$(".class").showAsInline();
+```
+To show DOM elements as inline-block
+```js
+$("h1")[0].showAsInlineBlock();
+$("#id").showAsInlineBlock();
+$(".class")[0].showAsInlineBlock();
+$("h1").showAsInlineBlock();
+$(".class").showAsInlineBlock();
 ```
 To disable library and release memory
 ```js
