@@ -28,15 +28,18 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			returnValue := js.Global().Get("document").Call("getElementById", selectorWithoutSymbol)
 			returnValue.Set("css", wasmQueryCSS)
 			returnValue.Set("hide", wasmQueryHide)
+			returnValue.Set("showAsBlock", wasmQueryShowAsBlock)
 			return returnValue
 		} else if string(domSelector[0]) == "." {
 			returnValue := js.Global().Get("document").Call("getElementsByClassName", selectorWithoutSymbol)
 			for i := 0; i < returnValue.Length(); i++ {
 				returnValue.Index(i).Set("css", wasmQueryCSS)
 				returnValue.Index(i).Set("hide", wasmQueryHide)
+				returnValue.Index(i).Set("showAsBlock", wasmQueryShowAsBlock)
 			}
 			returnValue.Set("css", wasmQueryCSSForArray)
 			returnValue.Set("hide", wasmQueryHideForArray)
+			returnValue.Set("showAsBlock", wasmQueryShowAsBlockForArray)
 			return returnValue
 		}
 	} else {
@@ -44,9 +47,11 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 		for i := 0; i < returnValue.Length(); i++ {
 			returnValue.Index(i).Set("css", wasmQueryCSS)
 			returnValue.Index(i).Set("hide", wasmQueryHide)
+			returnValue.Index(i).Set("showAsBlock", wasmQueryShowAsBlock)
 		}
 		returnValue.Set("css", wasmQueryCSSForArray)
 		returnValue.Set("hide", wasmQueryHideForArray)
+		returnValue.Set("showAsBlock", wasmQueryShowAsBlockForArray)
 		return returnValue
 	}
 	return nil
@@ -106,11 +111,28 @@ var wasmQueryHideForArray js.Func = js.FuncOf(func(this js.Value, args []js.Valu
 	return outputArray
 })
 
+var wasmQueryShowAsBlock js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	this.Get("style").Set("display", "block")
+	return this.Get("style").Get("display")
+})
+
+var wasmQueryShowAsBlockForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	var outputArray []interface{}
+	for i := 0; i < this.Length(); i++ {
+		this.Index(i).Get("style").Set("display", "block")
+		valueOfIteration := this.Index(i).Get("style").Get("display")
+		outputArray = append(outputArray, valueOfIteration)
+	}
+	return outputArray
+})
+
 var disableLibrary js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 	wasmQuery.Release()
 	wasmQueryCSS.Release()
 	wasmQueryCSSForArray.Release()
 	wasmQueryHide.Release()
 	wasmQueryHideForArray.Release()
+	wasmQueryShowAsBlock.Release()
+	wasmQueryShowAsBlockForArray.Release()
 	return nil
 })
