@@ -150,6 +150,7 @@ var wasmQueryShowForArray js.Func = js.FuncOf(func(this js.Value, args []js.Valu
 		for j := 0; j < len(listOfInlineTags); j++ {
 			if this.Index(i).Get("tagName").String() == listOfInlineTags[j] {
 				this.Index(i).Get("style").Set("display", "inline")
+				break
 			} else {
 				this.Index(i).Get("style").Set("display", "block")
 			}
