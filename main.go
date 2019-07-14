@@ -28,7 +28,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			returnValue := js.Global().Get("document").Call("getElementById", selectorWithoutSymbol)
 			returnValue.Set("css", wasmQueryCSS)
 			returnValue.Set("hide", wasmQueryHide)
-			returnValue.Set("show", wasmQueryShowAsBlock)
+			returnValue.Set("show", wasmQueryShow)
 			returnValue.Set("showAsBlock", wasmQueryShowAsBlock)
 			returnValue.Set("showAsInline", wasmQueryShowAsInline)
 			returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlock)
@@ -39,7 +39,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			for i := 0; i < returnValue.Length(); i++ {
 				returnValue.Index(i).Set("css", wasmQueryCSS)
 				returnValue.Index(i).Set("hide", wasmQueryHide)
-				returnValue.Index(i).Set("show", wasmQueryShowAsBlock)
+				returnValue.Index(i).Set("show", wasmQueryShow)
 				returnValue.Index(i).Set("showAsBlock", wasmQueryShowAsBlock)
 				returnValue.Index(i).Set("showAsInline", wasmQueryShowAsInline)
 				returnValue.Index(i).Set("showAsInlineBlock", wasmQueryShowAsInlineBlock)
@@ -47,7 +47,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			}
 			returnValue.Set("css", wasmQueryCSSForArray)
 			returnValue.Set("hide", wasmQueryHideForArray)
-			returnValue.Set("show", wasmQueryShowAsBlockForArray)
+			returnValue.Set("show", wasmQueryShowForArray)
 			returnValue.Set("showAsBlock", wasmQueryShowAsBlockForArray)
 			returnValue.Set("showAsInline", wasmQueryShowAsInlineForArray)
 			returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlockForArray)
@@ -59,7 +59,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 		for i := 0; i < returnValue.Length(); i++ {
 			returnValue.Index(i).Set("css", wasmQueryCSS)
 			returnValue.Index(i).Set("hide", wasmQueryHide)
-			returnValue.Index(i).Set("show", wasmQueryShowAsBlock)
+			returnValue.Index(i).Set("show", wasmQueryShow)
 			returnValue.Index(i).Set("showAsBlock", wasmQueryShowAsBlock)
 			returnValue.Index(i).Set("showAsInline", wasmQueryShowAsInline)
 			returnValue.Index(i).Set("showAsInlineBlock", wasmQueryShowAsInlineBlock)
@@ -67,7 +67,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 		}
 		returnValue.Set("css", wasmQueryCSSForArray)
 		returnValue.Set("hide", wasmQueryHideForArray)
-		returnValue.Set("show", wasmQueryShowAsBlockForArray)
+		returnValue.Set("show", wasmQueryShowForArray)
 		returnValue.Set("showAsBlock", wasmQueryShowAsBlockForArray)
 		returnValue.Set("showAsInline", wasmQueryShowAsInlineForArray)
 		returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlockForArray)
@@ -127,6 +127,35 @@ var wasmQueryHideForArray js.Func = js.FuncOf(func(this js.Value, args []js.Valu
 		this.Index(i).Get("style").Set("display", "none")
 		valueOfIteration := this.Index(i).Get("style").Get("display")
 		outputArray = append(outputArray, valueOfIteration)
+	}
+	return outputArray
+})
+
+var wasmQueryShow js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	listOfInlineTags := []string{"B", "BIG", "I", "SMALL", "TT", "ABBR", "ACRONYM", "CITE", "CODE", "DFN", "EM", "KBD", "STRONG", "SAMP", "VAR", "A", "BDO", "BR", "IMG", "MAP", "OBJECT", "Q", "SCRIPT", "SPAN", "SUB", "SUP", "BUTTON", "INPUT", "LABEL", "SELECT", "TEXTAREA"}
+	for i := 0; i < len(listOfInlineTags); i++ {
+		if this.Get("tagName").String() == listOfInlineTags[i] {
+			this.Get("style").Set("display", "inline")
+			return this.Get("style").Get("display")
+		}
+	}
+	this.Get("style").Set("display", "block")
+	return this.Get("style").Get("display")
+})
+
+var wasmQueryShowForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	var outputArray []interface{}
+	listOfInlineTags := []string{"B", "BIG", "I", "SMALL", "TT", "ABBR", "ACRONYM", "CITE", "CODE", "DFN", "EM", "KBD", "STRONG", "SAMP", "VAR", "A", "BDO", "BR", "IMG", "MAP", "OBJECT", "Q", "SCRIPT", "SPAN", "SUB", "SUP", "BUTTON", "INPUT", "LABEL", "SELECT", "TEXTAREA"}
+	for i := 0; i < this.Length(); i++ {
+		for j := 0; j < len(listOfInlineTags); j++ {
+			if this.Index(j).Get("tagName").String() == listOfInlineTags[i] {
+				this.Index(j).Get("style").Set("display", "inline")
+			} else {
+				this.Index(j).Get("style").Set("display", "block")
+			}
+			valueOfIteration := this.Index(j).Get("style").Get("display")
+			outputArray = append(outputArray, valueOfIteration)
+		}
 	}
 	return outputArray
 })
@@ -197,6 +226,8 @@ var disableLibrary js.Func = js.FuncOf(func(this js.Value, args []js.Value) inte
 	wasmQueryCSSForArray.Release()
 	wasmQueryHide.Release()
 	wasmQueryHideForArray.Release()
+	wasmQueryShow.Release()
+	wasmQueryShowForArray.Release()
 	wasmQueryShowAsBlock.Release()
 	wasmQueryShowAsBlockForArray.Release()
 	wasmQueryShowAsInline.Release()
