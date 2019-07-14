@@ -1,6 +1,8 @@
 package main
 
-import "syscall/js"
+import (
+	"syscall/js"
+)
 
 var wasmQueryValForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 	var outputArray []interface{}
@@ -12,10 +14,18 @@ var wasmQueryValForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value
 		return outputArray
 	}
 	value := args[0]
-	for i := 0; i < this.Length(); i++ {
-		this.Index(i).Set("value", value)
-		valueOfIteration := this.Index(i).Get("value")
-		outputArray = append(outputArray, valueOfIteration)
+	if value.Type().String() == "object" {
+		for i := 0; i < this.Length(); i++ {
+			this.Index(i).Set("value", value.Index(i))
+			valueOfIteration := this.Index(i).Get("value")
+			outputArray = append(outputArray, valueOfIteration)
+		}
+	} else {
+		for i := 0; i < this.Length(); i++ {
+			this.Index(i).Set("value", value)
+			valueOfIteration := this.Index(i).Get("value")
+			outputArray = append(outputArray, valueOfIteration)
+		}
 	}
 	return outputArray
 })
