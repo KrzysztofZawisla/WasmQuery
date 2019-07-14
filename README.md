@@ -37,7 +37,7 @@ $(".class")[0].hide();
 $("h1").hide();
 $(".class").hide();
 ```
-To show DOM elements as block 
+To show DOM elements based on tag name
 ```js
 $("h1")[0].show();
 $("#id").show();
@@ -45,7 +45,7 @@ $(".class")[0].show();
 $("h1").show();
 $(".class").show();
 ```
-or
+To show DOM elements as block 
 ```js
 $("h1")[0].showAsBlock();
 $("#id").showAsBlock();
