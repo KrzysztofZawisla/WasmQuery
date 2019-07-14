@@ -77,6 +77,22 @@ $(".class")[0].showAFlex();
 $("h1").showAFlex();
 $(".class").showAFlex();
 ```
+To return value
+```js
+$("h1")[0].val();
+$("#id").val();
+$(".class")[0].val();
+$("h1").val();
+$(".class").val();
+```
+To setup value
+```js
+$("h1")[0].val("exampleValue");
+$("#id").val("exampleValue");
+$(".class")[0].val("exampleValue");
+$("h1").val("exampleValue");
+$(".class").val("exampleValue");
+```
 To disable library and release memory
 ```js
 $.disableLibrary();
