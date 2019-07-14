@@ -71,11 +71,11 @@ $(".class").showAsInlineBlock();
 ```
 To show DOM elements as flex
 ```js
-$("h1")[0].showAFlex();
-$("#id").showAFlex();
-$(".class")[0].showAFlex();
-$("h1").showAFlex();
-$(".class").showAFlex();
+$("h1")[0].showAsFlex();
+$("#id").showAsFlex();
+$(".class")[0].showAsFlex();
+$("h1").showAsFlex();
+$(".class").showAsFlex();
 ```
 To return value
 ```js
