@@ -39,6 +39,14 @@ $(".class").hide();
 ```
 To show DOM elements as block 
 ```js
+$("h1")[0].show();
+$("#id").show();
+$(".class")[0].show();
+$("h1").show();
+$(".class").show();
+```
+or
+```js
 $("h1")[0].showAsBlock();
 $("#id").showAsBlock();
 $(".class")[0].showAsBlock();
