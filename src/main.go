@@ -33,6 +33,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			returnValue.Set("showAsInline", wasmQueryShowAsInline)
 			returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlock)
 			returnValue.Set("showAsFlex", wasmQueryShowAsFlex)
+			returnValue.Set("val", wasmQueryVal)
 			return returnValue
 		} else if string(domSelector[0]) == "." {
 			returnValue := js.Global().Get("document").Call("getElementsByClassName", selectorWithoutSymbol)
@@ -44,6 +45,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 				returnValue.Index(i).Set("showAsInline", wasmQueryShowAsInline)
 				returnValue.Index(i).Set("showAsInlineBlock", wasmQueryShowAsInlineBlock)
 				returnValue.Index(i).Set("showAsFlex", wasmQueryShowAsFlex)
+				returnValue.Index(i).Set("val", wasmQueryVal)
 			}
 			returnValue.Set("css", wasmQueryCSSForArray)
 			returnValue.Set("hide", wasmQueryHideForArray)
@@ -52,6 +54,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			returnValue.Set("showAsInline", wasmQueryShowAsInlineForArray)
 			returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlockForArray)
 			returnValue.Set("showAsFlex", wasmQueryShowAsFlexForArray)
+			returnValue.Set("val", wasmQueryValForArray)
 			return returnValue
 		}
 	} else {
@@ -64,6 +67,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			returnValue.Index(i).Set("showAsInline", wasmQueryShowAsInline)
 			returnValue.Index(i).Set("showAsInlineBlock", wasmQueryShowAsInlineBlock)
 			returnValue.Index(i).Set("showAsFlex", wasmQueryShowAsFlex)
+			returnValue.Index(i).Set("val", wasmQueryVal)
 		}
 		returnValue.Set("css", wasmQueryCSSForArray)
 		returnValue.Set("hide", wasmQueryHideForArray)
@@ -72,6 +76,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 		returnValue.Set("showAsInline", wasmQueryShowAsInlineForArray)
 		returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlockForArray)
 		returnValue.Set("showAsFlex", wasmQueryShowAsFlexForArray)
+		returnValue.Set("val", wasmQueryValForArray)
 		return returnValue
 	}
 	return nil
