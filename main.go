@@ -28,6 +28,7 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			returnValue := js.Global().Get("document").Call("getElementById", selectorWithoutSymbol)
 			returnValue.Set("css", wasmQueryCSS)
 			returnValue.Set("hide", wasmQueryHide)
+			returnValue.Set("show", wasmQueryShowAsBlock)
 			returnValue.Set("showAsBlock", wasmQueryShowAsBlock)
 			returnValue.Set("showAsInline", wasmQueryShowAsInline)
 			returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlock)
@@ -37,12 +38,14 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 			for i := 0; i < returnValue.Length(); i++ {
 				returnValue.Index(i).Set("css", wasmQueryCSS)
 				returnValue.Index(i).Set("hide", wasmQueryHide)
+				returnValue.Index(i).Set("show", wasmQueryShowAsBlock)
 				returnValue.Index(i).Set("showAsBlock", wasmQueryShowAsBlock)
 				returnValue.Index(i).Set("showAsInline", wasmQueryShowAsInline)
 				returnValue.Index(i).Set("showAsInlineBlock", wasmQueryShowAsInlineBlock)
 			}
 			returnValue.Set("css", wasmQueryCSSForArray)
 			returnValue.Set("hide", wasmQueryHideForArray)
+			returnValue.Set("show", wasmQueryShowAsBlockForArray)
 			returnValue.Set("showAsBlock", wasmQueryShowAsBlockForArray)
 			returnValue.Set("showAsInline", wasmQueryShowAsInlineForArray)
 			returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlockForArray)
@@ -53,12 +56,14 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 		for i := 0; i < returnValue.Length(); i++ {
 			returnValue.Index(i).Set("css", wasmQueryCSS)
 			returnValue.Index(i).Set("hide", wasmQueryHide)
+			returnValue.Index(i).Set("show", wasmQueryShowAsBlock)
 			returnValue.Index(i).Set("showAsBlock", wasmQueryShowAsBlock)
 			returnValue.Index(i).Set("showAsInline", wasmQueryShowAsInline)
 			returnValue.Index(i).Set("showAsInlineBlock", wasmQueryShowAsInlineBlock)
 		}
 		returnValue.Set("css", wasmQueryCSSForArray)
 		returnValue.Set("hide", wasmQueryHideForArray)
+		returnValue.Set("show", wasmQueryShowAsBlockForArray)
 		returnValue.Set("showAsBlock", wasmQueryShowAsBlockForArray)
 		returnValue.Set("showAsInline", wasmQueryShowAsInlineForArray)
 		returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlockForArray)
