@@ -29,6 +29,14 @@ $(".class")[0].css("color", "fuchsia");
 $("h1").css("color", "fuchsia")
 $(".class").css("color", "fuchsia")
 ```
+or
+```js
+$("h1")[0].css("color", ["fuchsia"])
+$("#id").css("color", ["fuchsia"])
+$(".class")[0].css("color", ["fuchsia"])
+$("h1").css("color", ["red", "green", "blue"]);
+$(".class").css("color", ["red", "green", "blue"]);
+```
 To hide DOM elements
 ```js
 $("h1")[0].hide();
