@@ -37,6 +37,14 @@ $(".class")[0].hide();
 $("h1").hide();
 $(".class").hide();
 ```
+To show as block DOM elements
+```js
+$("h1")[0].showAsBlock();
+$("#id").showAsBlock();
+$(".class")[0].showAsBlock();
+$("h1").showAsBlock();
+$(".class").showAsBlock();
+```
 To disable library and release memory
 ```js
 $.disableLibrary();
