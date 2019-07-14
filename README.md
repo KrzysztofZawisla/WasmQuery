@@ -29,6 +29,14 @@ $(".class")[0].css("color", "fuchsia");
 $("h1").css("color", "fuchsia")
 $(".class").css("color", "fuchsia")
 ```
+To hide DOM elements
+```js
+$("h1")[0].hide();
+$("#id").hide();
+$(".class")[0].hide();
+$("h1").hide();
+$(".class").hide();
+```
 To disable library and release memory
 ```js
 $.disableLibrary();
