@@ -69,6 +69,14 @@ $(".class")[0].showAsInlineBlock();
 $("h1").showAsInlineBlock();
 $(".class").showAsInlineBlock();
 ```
+To show DOM elements as flex
+```js
+$("h1")[0].showAFlex();
+$("#id").showAFlex();
+$(".class")[0].showAFlex();
+$("h1").showAFlex();
+$(".class").showAFlex();
+```
 To disable library and release memory
 ```js
 $.disableLibrary();
