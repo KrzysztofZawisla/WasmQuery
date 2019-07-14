@@ -18,6 +18,8 @@ To return CSS property
 $("h1")[0].css("color");
 $("#id").css("color");
 $(".class")[0].css("color");
+$("h1").css("color");
+$(".class").css("color");
 ```
 To setup CSS property
 ```js
