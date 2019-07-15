@@ -21,5 +21,7 @@ var disableLibrary js.Func = js.FuncOf(func(this js.Value, args []js.Value) inte
 	wasmQueryVal.Release()
 	wasmQueryValForArray.Release()
 	wasmQueryLen.Release()
+	wasmQueryWidth.Release()
+	wasmQueryWidthForArray.Release()
 	return nil
 })
