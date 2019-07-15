@@ -1,6 +1,5 @@
 # WasmQuery
-Experimental jQuery-like library written in Go. Available from JavaScript by WebAssembly module. Personally I recommend to use Vanilla JavaScript instead jQuery-like libraries. Vanilla JavaScript ES6 and higher are powerful enough.
-
+Experimental jQuery-like library written in Go. Available from JavaScript by WebAssembly module.
 ## Syntax
 General syntax  
 ```js
