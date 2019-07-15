@@ -5,8 +5,8 @@ General syntax
 ```js
 $("selector").method();
 ```
+## Methods
 Standard invoke returns DOM elements  
-For example:  
 ```js
 $("h1")[0];
 $("#id")[0];
