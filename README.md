@@ -103,11 +103,16 @@ $(".class").val("exampleValue");
 ```
 or
 ```js
-$("h1")[0].val(["exampleValue1"])
-$("#id").val(["exampleValue1"])
-$(".class")[0].val(["exampleValue1"])
+$("h1")[0].val(["exampleValue1"]);
+$("#id").val(["exampleValue1"]);
+$(".class")[0].val(["exampleValue1"]);
 $("h1").val(["exampleValue1", "exampleValue2", "exampleValue3"]);
 $(".class").val(["exampleValue1", "exampleValue2", "exampleValue3"]);
+```
+To return lenght of DOM elements array
+```js
+$("h1").len();
+$(".class").len();
 ```
 To disable library and release memory
 ```js
