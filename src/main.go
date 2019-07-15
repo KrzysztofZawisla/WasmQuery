@@ -35,5 +35,6 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 	returnValue.Set("showAsInlineBlock", wasmQueryShowAsInlineBlockForArray)
 	returnValue.Set("showAsFlex", wasmQueryShowAsFlexForArray)
 	returnValue.Set("val", wasmQueryValForArray)
+	returnValue.Set("len", wasmQueryLen)
 	return returnValue
 })
