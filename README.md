@@ -156,6 +156,24 @@ $("h1").width(["100px", "200px", "300px"]);
 $("#id").width(["100px"]);
 $(".class").width(["100px", "200px", "300px"]);
 ```
+To setup height of DOM elements
+```js
+$("h1")[0].height("100px");
+$("#id")[0].height("100px");
+$(".class")[0].height("100px");
+$("h1").height("100px");
+$("#id").height("100px");
+$(".class").height("100px");
+```
+or
+```js
+$("h1")[0].height(["100px"]);
+$("#id")[0].height(["100px"]);
+$(".class")[0].height(["100px"]);
+$("h1").height(["100px", "200px", "300px"]);
+$("#id").height(["100px"]);
+$(".class").height(["100px", "200px", "300px"]);
+```
 To disable library and release memory
 ```js
 $.disableLibrary();
