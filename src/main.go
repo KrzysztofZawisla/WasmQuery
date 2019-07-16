@@ -15,7 +15,11 @@ var wasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 	if len(args) == 0 {
 		return nil
 	}
-	domSelector := args[0].String()
+	domSelector := args[0]
+	if domSelector == js.Global().Get("document") {
+		returnValue := args[0]
+		return returnValue
+	}
 	returnValue := js.Global().Get("document").Call("querySelectorAll", domSelector)
 	for i := 0; i < returnValue.Length(); i++ {
 		returnValue.Index(i).Set("css", wasmQueryCSS)
