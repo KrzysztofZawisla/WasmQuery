@@ -174,6 +174,24 @@ $("h1").height(["100px", "200px", "300px"]);
 $("#id").height(["100px"]);
 $(".class").height(["100px", "200px", "300px"]);
 ```
+To get attribute of DOM elements
+```js
+$("h1")[0].attr("alt");
+$("#id")[0].attr("alt");
+$(".class")[0].attr("alt");
+$("h1").attr("alt");
+$("#id").attr("alt");
+$(".class").attr("alt");
+```
+or
+```js
+$("h1")[0].attr(["alt"]);
+$("#id")[0].attr(["alt"]);
+$(".class")[0].attr(["alt"]);
+$("h1").attr(["alt", "class", "src"]);
+$("#id").attr(["alt", "class", "src"]);
+$(".class").attr(["alt", "class", "src"]);
+```
 To disable library and release memory
 ```js
 $.disableLibrary(); // disable all methods
