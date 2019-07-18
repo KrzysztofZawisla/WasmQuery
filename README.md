@@ -176,5 +176,7 @@ $(".class").height(["100px", "200px", "300px"]);
 ```
 To disable library and release memory
 ```js
-$.disableLibrary();
+$.disableLibrary(); // disable all methods
+$.disableLibrary(0); // disable method with index 0
+$.disableLibrary([0, 1, 2]) // disable methods with index 0, 1, 2
 ```
