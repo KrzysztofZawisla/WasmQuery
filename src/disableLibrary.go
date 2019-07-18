@@ -29,6 +29,8 @@ var disableLibrary js.Func = js.FuncOf(func(this js.Value, args []js.Value) inte
 	arrayWithMethods[20] = wasmQueryWidthForArray
 	arrayWithMethods[21] = wasmQueryHeight
 	arrayWithMethods[22] = wasmQueryHeightForArray
+	arrayWithMethods[23] = wasmQueryAttr
+	arrayWithMethods[24] = wasmQueryAttrForArray
 	if len(args) == 0 {
 		for i := 0; i < len(arrayWithMethods); i++ {
 			arrayWithMethods[i].(js.Func).Release()
