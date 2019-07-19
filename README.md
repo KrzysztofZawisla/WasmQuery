@@ -5,6 +5,7 @@ Experimental jQuery-like library written in Go. Available from JavaScript by Web
 registerWasmQuery();
 registerWasmQuery("test");
 registerWasmQuery(["$", "test"]);
+```
 ## Syntax
 General syntax  
 ```js
