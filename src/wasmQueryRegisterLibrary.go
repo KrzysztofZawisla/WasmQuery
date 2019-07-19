@@ -12,6 +12,7 @@ var wasmQueryRegisterLibrary js.Func = js.FuncOf(func(this js.Value, args []js.V
 			for i := 0; i < args[0].Length(); i++ {
 				js.Global().Set(args[0].Index(i).String(), wasmQuery)
 				js.Global().Get(args[0].Index(i).String()).Set("disableLibrary", wasmQueryDisableLibrary)
+				js.Global().Get(args[0].Index(i).String()).Set("timeNow", wasmQueryTimeNow)
 				outputArray = append(outputArray, args[0].Index(i))
 			}
 			return outputArray
@@ -20,5 +21,6 @@ var wasmQueryRegisterLibrary js.Func = js.FuncOf(func(this js.Value, args []js.V
 	}
 	js.Global().Set(symbol, wasmQuery)
 	js.Global().Get(symbol).Set("disableLibrary", wasmQueryDisableLibrary)
+	js.Global().Get(symbol).Set("timeNow", wasmQueryTimeNow)
 	return symbol
 })
