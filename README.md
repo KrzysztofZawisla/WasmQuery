@@ -2,9 +2,9 @@
 Experimental jQuery-like library written in Go. Available from JavaScript by WebAssembly module.
 ## To register WasmQuery in JS
 ```js
-registerWasmQuery();
-registerWasmQuery("test");
-registerWasmQuery(["$", "test"]);
+registerWasmQuery(); // register library under $ variable
+registerWasmQuery("test"); // register library under test variable
+registerWasmQuery(["$", "test"]); // register library under $ and test variable
 ```
 ## Syntax
 General syntax  
