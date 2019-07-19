@@ -1,6 +1,8 @@
 package main
 
-import "syscall/js"
+import (
+	"syscall/js"
+)
 
 var wasmQueryAttr js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 	if len(args) == 0 {
