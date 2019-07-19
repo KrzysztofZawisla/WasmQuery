@@ -7,6 +7,15 @@ import (
 var wasmQueryRegisterLibrary js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 	var symbol string = "$"
 	if len(args) >= 1 {
+		if args[0].Type().String() == "object" {
+			var outputArray []interface{}
+			for i := 0; i < args[0].Length(); i++ {
+				js.Global().Set(args[0].Index(i).String(), wasmQuery)
+				js.Global().Get(args[0].Index(i).String()).Set("disableLibrary", wasmQueryDisableLibrary)
+				outputArray = append(outputArray, args[0].Index(i))
+			}
+			return outputArray
+		}
 		symbol = args[0].String()
 	}
 	js.Global().Set(symbol, wasmQuery)
