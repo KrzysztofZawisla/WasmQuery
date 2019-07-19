@@ -1,10 +1,18 @@
 # WasmQuery
 Experimental jQuery-like library written in Go. Available from JavaScript by WebAssembly module.
+<<<<<<< HEAD
 ## Register library
 ```js
 registerWasmQuery(); // register with $ sign
 registerWasmQuery("wasmQuery"); // register lib under "wasmQuery" variable
 registerWasmQuery(["$", "wasmQuery", "test"]) // multiple register
+=======
+## To register WasmQuery in JS
+```js
+registerWasmQuery(); // register library under $ variable
+registerWasmQuery("test"); // register library under test variable
+registerWasmQuery(["$", "test"]); // register library under $ and test variable
+>>>>>>> c47d78e6d1c3604066d41538496d9bd05777a778
 ```
 ## Syntax
 General syntax  
