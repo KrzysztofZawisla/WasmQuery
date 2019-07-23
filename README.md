@@ -1,5 +1,9 @@
 # WasmQuery
-Experimental jQuery-like library written in Go. Available from JavaScript by WebAssembly module.
+Experimental jQuery-like library written in Go. Available from JavaScript by WebAssembly module. In future I have idea to add another modules to WasmQuery and rename jQuery-like part of WasmQuery to $.shortQuery module.
+## Roadmap
+| Goals | Status |
+| --- | --- |
+| Compile WasmQuery with Tinygo | - ❌ | 
 ## Register library
 ```js
 registerWasmQuery(); // register with $ sign
