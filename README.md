@@ -3,10 +3,10 @@ Experimental jQuery-like library written in Go. Available from JavaScript by Web
 ## Roadmap
 | Goals | Status |
 | --- | --- |
-| Create build with Tinygo | ❌ | 
-| Create two versions (in go and rust) | ❌ | 
-| Create own constructor for WasmQuery function with custom element return | ❌ | 
-| Stable build for shortQuery module | ❌ | 
+| Create build with Tinygo |❌| 
+| Create two versions (in go and rust) |❌| 
+| Create own constructor for WasmQuery function with custom element return |❌| 
+| Stable build for shortQuery module |❌| 
 ## Register library
 ```js
 registerWasmQuery(); // register with $ sign
