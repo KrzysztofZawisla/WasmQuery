@@ -10,25 +10,21 @@ var WasmQueryAttrForArray js.Func = js.FuncOf(func(this js.Value, args []js.Valu
 		return nil
 	}
 	selector := args[0]
-	if len(args) >= 1 {
-		if selector.Type().String() == "object" {
-			var outputArray []interface{}
-			for i := 0; i < this.Length(); i++ {
-				var arrayForOneValue []interface{}
-				for j := 0; j < selector.Length(); j++ {
-					valueOfIteration := this.Index(i).Call("getAttribute", selector.Index(j))
-					arrayForOneValue = append(arrayForOneValue, valueOfIteration)
-				}
-				outputArray = append(outputArray, arrayForOneValue)
-			}
-			return outputArray
-		}
-		var outputArray []interface{}
+	var outputArray []interface{}
+	if selector.Type().String() == "object" {
 		for i := 0; i < this.Length(); i++ {
-			valueOfIteration := this.Index(i).Call("getAttribute", selector.String())
-			outputArray = append(outputArray, valueOfIteration)
+			var arrayForOneValue []interface{}
+			for j := 0; j < selector.Length(); j++ {
+				valueOfIteration := this.Index(i).Call("getAttribute", selector.Index(j))
+				arrayForOneValue = append(arrayForOneValue, valueOfIteration)
+			}
+			outputArray = append(outputArray, arrayForOneValue)
 		}
 		return outputArray
 	}
-	return nil
+	for i := 0; i < this.Length(); i++ {
+		valueOfIteration := this.Index(i).Call("getAttribute", selector.String())
+		outputArray = append(outputArray, valueOfIteration)
+	}
+	return outputArray
 })

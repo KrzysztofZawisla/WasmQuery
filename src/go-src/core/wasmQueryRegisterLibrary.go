@@ -4,7 +4,7 @@ import (
 	"syscall/js"
 
 	"github.com/KrzysztofZawisla/WasmQuery/shortquery"
-	timequery "github.com/KrzysztofZawisla/WasmQuery/timeQuery/wasmQueryTime"
+	"github.com/KrzysztofZawisla/WasmQuery/timequery"
 )
 
 /* WasmQueryRegisterLibrary is a function to register library. */

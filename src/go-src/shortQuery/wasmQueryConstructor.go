@@ -27,6 +27,8 @@ var WasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 		returnValue.Index(i).Set("width", WasmQueryWidth)
 		returnValue.Index(i).Set("height", WasmQueryHeight)
 		returnValue.Index(i).Set("attr", WasmQueryAttr)
+		returnValue.Index(i).Set("addClass", WasmQueryAddClass)
+		returnValue.Index(i).Set("removeClass", WasmQueryRemoveClass)
 	}
 	returnValue.Set("css", WasmQueryCSSForArray)
 	returnValue.Set("hide", WasmQueryHideForArray)
@@ -40,5 +42,7 @@ var WasmQuery js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface
 	returnValue.Set("width", WasmQueryWidthForArray)
 	returnValue.Set("height", WasmQueryHeightForArray)
 	returnValue.Set("attr", WasmQueryAttrForArray)
+	returnValue.Set("addClass", WasmQueryAddClassForArray)
+	returnValue.Set("removeClass", WasmQueryRemoveClassForArray)
 	return returnValue
 })
