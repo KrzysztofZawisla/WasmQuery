@@ -8,9 +8,9 @@ var WasmQueryShow js.Func = js.FuncOf(func(this js.Value, args []js.Value) inter
 	for i := 0; i < len(listOfInlineTags); i++ {
 		if this.Get("tagName").String() == listOfInlineTags[i] {
 			this.Get("style").Set("display", "inline")
-			return this.Get("style").Get("display")
+			return js.Global().Get("window").Call("getComputedStyle", this).Get("display")
 		}
 	}
 	this.Get("style").Set("display", "block")
-	return this.Get("style").Get("display")
+	return js.Global().Get("window").Call("getComputedStyle", this).Get("display")
 })

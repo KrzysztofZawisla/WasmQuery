@@ -7,7 +7,7 @@ var WasmQueryShowAsBlockForArray js.Func = js.FuncOf(func(this js.Value, args []
 	var outputArray []interface{}
 	for i := 0; i < this.Length(); i++ {
 		this.Index(i).Get("style").Set("display", "block")
-		valueOfIteration := this.Index(i).Get("style").Get("display")
+		valueOfIteration := js.Global().Get("window").Call("getComputedStyle", this.Index(i)).Get("display")
 		outputArray = append(outputArray, valueOfIteration)
 	}
 	return outputArray

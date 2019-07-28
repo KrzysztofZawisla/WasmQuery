@@ -7,7 +7,7 @@ var WasmQueryHeightForArray js.Func = js.FuncOf(func(this js.Value, args []js.Va
 	var outputArray []interface{}
 	if len(args) == 0 {
 		for i := 0; i < this.Length(); i++ {
-			valueOfIteration := this.Index(i).Get("style").Get("height")
+			valueOfIteration := js.Global().Get("window").Call("getComputedStyle", this.Index(i)).Get("height")
 			outputArray = append(outputArray, valueOfIteration)
 		}
 		return outputArray
@@ -16,13 +16,13 @@ var WasmQueryHeightForArray js.Func = js.FuncOf(func(this js.Value, args []js.Va
 	if value.Type().String() == "object" {
 		for i := 0; i < this.Length(); i++ {
 			this.Index(i).Get("style").Set("height", value.Index(i))
-			valueOfIteration := this.Index(i).Get("style").Get("height")
+			valueOfIteration := js.Global().Get("window").Call("getComputedStyle", this.Index(i)).Get("height")
 			outputArray = append(outputArray, valueOfIteration)
 		}
 	} else {
 		for i := 0; i < this.Length(); i++ {
 			this.Index(i).Get("style").Set("height", value)
-			valueOfIteration := this.Index(i).Get("style").Get("height")
+			valueOfIteration := js.Global().Get("window").Call("getComputedStyle", this.Index(i)).Get("height")
 			outputArray = append(outputArray, valueOfIteration)
 		}
 	}

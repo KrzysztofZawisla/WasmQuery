@@ -9,5 +9,5 @@ var WasmQueryWidth js.Func = js.FuncOf(func(this js.Value, args []js.Value) inte
 	}
 	value := args[0]
 	this.Get("style").Set("width", value)
-	return this.Get("style").Get("width")
+	return js.Global().Get("window").Call("getComputedStyle", this).Get("width")
 })

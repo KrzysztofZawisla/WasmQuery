@@ -7,7 +7,7 @@ var WasmQueryShowAsInlineBlockForArray js.Func = js.FuncOf(func(this js.Value, a
 	var outputArray []interface{}
 	for i := 0; i < this.Length(); i++ {
 		this.Index(i).Get("style").Set("display", "inline-block")
-		valueOfIteration := this.Index(i).Get("style").Get("display")
+		valueOfIteration := js.Global().Get("window").Call("getComputedStyle", this.Index(i)).Get("display")
 		outputArray = append(outputArray, valueOfIteration)
 	}
 	return outputArray
