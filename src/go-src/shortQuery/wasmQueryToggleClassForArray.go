@@ -5,11 +5,15 @@ import (
 )
 
 var WasmQueryToggleClassForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+	var outputArray []interface{}
 	if len(args) == 0 {
-		return nil
+		for i := 0; i < this.Length(); i++ {
+			valueOfIteration := this.Index(i).Get("classList")
+			outputArray = append(outputArray, valueOfIteration)
+		}
+		return outputArray
 	}
 	selector := args[0]
-	var outputArray []interface{}
 	if selector.Type().String() == "object" {
 		for i := 0; i < this.Length(); i++ {
 			if selector.Index(i).String() == "undefined" || selector.Index(i).String() == "" {
