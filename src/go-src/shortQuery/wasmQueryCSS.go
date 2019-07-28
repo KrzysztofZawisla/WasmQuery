@@ -9,11 +9,11 @@ var WasmQueryCSS js.Func = js.FuncOf(func(this js.Value, args []js.Value) interf
 	}
 	var selector string = args[0].String()
 	if len(args) == 1 {
-		return this.Get("style").Get(selector)
+		return js.Global().Get("window").Call("getComputedStyle", this).Get(selector)
 	} else if len(args) >= 2 {
 		var value string = args[1].String()
 		this.Get("style").Set(selector, value)
-		return this.Get("style").Get(selector)
+		return js.Global().Get("window").Call("getComputedStyle", this).Get(selector)
 	}
 	return nil
 })

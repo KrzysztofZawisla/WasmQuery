@@ -11,7 +11,7 @@ var WasmQueryCSSForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value
 	var outputArray []interface{}
 	if len(args) == 1 {
 		for i := 0; i < this.Length(); i++ {
-			valueOfIteration := this.Index(i).Get("style").Get(selector)
+			valueOfIteration := js.Global().Get("window").Call("getComputedStyle", this.Index(i)).Get(selector)
 			outputArray = append(outputArray, valueOfIteration)
 		}
 		return outputArray
@@ -20,13 +20,13 @@ var WasmQueryCSSForArray js.Func = js.FuncOf(func(this js.Value, args []js.Value
 		if value.Type().String() == "object" {
 			for i := 0; i < this.Length(); i++ {
 				this.Index(i).Get("style").Set(selector, value.Index(i).String())
-				valueOfIteration := this.Index(i).Get("style").Get(selector)
+				valueOfIteration := js.Global().Get("window").Call("getComputedStyle", this.Index(i)).Get(selector)
 				outputArray = append(outputArray, valueOfIteration)
 			}
 		} else {
 			for i := 0; i < this.Length(); i++ {
 				this.Index(i).Get("style").Set(selector, value.String())
-				valueOfIteration := this.Index(i).Get("style").Get(selector)
+				valueOfIteration := js.Global().Get("window").Call("getComputedStyle", this.Index(i)).Get(selector)
 				outputArray = append(outputArray, valueOfIteration)
 			}
 		}
