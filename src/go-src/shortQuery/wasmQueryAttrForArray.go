@@ -9,13 +9,13 @@ var WasmQueryAttrForArray js.Func = js.FuncOf(func(this js.Value, args []js.Valu
 	if len(args) == 0 {
 		return nil
 	}
-	selector := args[0]
+	value := args[0]
 	var outputArray []interface{}
-	if selector.Type().String() == "object" {
+	if value.Type().String() == "object" {
 		for i := 0; i < this.Length(); i++ {
 			var arrayForOneValue []interface{}
-			for j := 0; j < selector.Length(); j++ {
-				valueOfIteration := this.Index(i).Call("getAttribute", selector.Index(j))
+			for j := 0; j < value.Length(); j++ {
+				valueOfIteration := this.Get("classList").Call("contains", value)
 				arrayForOneValue = append(arrayForOneValue, valueOfIteration)
 			}
 			outputArray = append(outputArray, arrayForOneValue)
@@ -23,7 +23,7 @@ var WasmQueryAttrForArray js.Func = js.FuncOf(func(this js.Value, args []js.Valu
 		return outputArray
 	}
 	for i := 0; i < this.Length(); i++ {
-		valueOfIteration := this.Index(i).Call("getAttribute", selector.String())
+		valueOfIteration := this.Index(i).Call("getAttribute", value.String())
 		outputArray = append(outputArray, valueOfIteration)
 	}
 	return outputArray

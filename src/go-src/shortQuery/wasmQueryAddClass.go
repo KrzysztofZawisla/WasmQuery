@@ -8,10 +8,13 @@ var WasmQueryAddClass js.Func = js.FuncOf(func(this js.Value, args []js.Value) i
 	if len(args) == 0 {
 		return this.Get("classList")
 	}
-	var selector string = args[0].String()
-	if selector == "undefined" || selector == "" {
-		return this.Get("classList")
+	value := args[0]
+	if value.Type().String() == "object" {
+		for i := 0; i < value.Length(); i++ {
+			this.Get("classList").Call("add", value.Index(i).String())
+		}
+	} else {
+		this.Get("classList").Call("add", value.String())
 	}
-	this.Get("classList").Call("add", selector)
 	return this.Get("classList")
 })

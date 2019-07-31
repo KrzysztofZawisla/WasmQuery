@@ -16,14 +16,13 @@ var WasmQueryToggleClassForArray js.Func = js.FuncOf(func(this js.Value, args []
 	selector := args[0]
 	if selector.Type().String() == "object" {
 		for i := 0; i < this.Length(); i++ {
-			if selector.Index(i).String() == "undefined" || selector.Index(i).String() == "" {
-				continue
-			}
-			var checkerOutput bool = this.Index(i).Get("classList").Call("contains", selector.Index(i)).Bool()
-			if checkerOutput == true {
-				this.Index(i).Get("classList").Call("remove", selector.Index(i))
-			} else {
-				this.Index(i).Get("classList").Call("add", selector.Index(i))
+			for j := 0; j < selector.Length(); j++ {
+				var checkerOutput bool = this.Index(i).Get("classList").Call("contains", selector.Index(j)).Bool()
+				if checkerOutput == true {
+					this.Index(i).Get("classList").Call("remove", selector.Index(j))
+				} else {
+					this.Index(i).Get("classList").Call("add", selector.Index(j))
+				}
 			}
 			valueOfIteration := this.Index(i).Get("classList")
 			outputArray = append(outputArray, valueOfIteration)

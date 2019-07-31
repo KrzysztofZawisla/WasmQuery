@@ -16,10 +16,9 @@ var WasmQueryRemoveClassForArray js.Func = js.FuncOf(func(this js.Value, args []
 	value := args[0]
 	if value.Type().String() == "object" {
 		for i := 0; i < this.Length(); i++ {
-			if value.Index(i).String() == "undefined" || value.Index(i).String() == "" {
-				continue
+			for j := 0; j < value.Length(); j++ {
+				this.Index(i).Get("classList").Call("remove", value.Index(j).String())
 			}
-			this.Index(i).Get("classList").Call("remove", value.Index(i).String())
 			valueOfIteration := this.Index(i).Get("classList")
 			outputArray = append(outputArray, valueOfIteration)
 		}

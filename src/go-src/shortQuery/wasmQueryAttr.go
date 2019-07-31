@@ -9,6 +9,14 @@ var WasmQueryAttr js.Func = js.FuncOf(func(this js.Value, args []js.Value) inter
 	if len(args) == 0 {
 		return nil
 	}
-	var selector string = args[0].String()
-	return this.Call("getAttribute", selector)
+	value := args[0]
+	if value.Type().String() == "object" {
+		var outputArray []interface{}
+		for i := 0; i < value.Length(); i++ {
+			valueOfIteration := this.Call("getAttribute", value.Index(i).String())
+			outputArray = append(outputArray, valueOfIteration)
+		}
+		return outputArray
+	}
+	return this.Call("getAttribute", value.String())
 })
