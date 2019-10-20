@@ -23,7 +23,6 @@ func WasmQuerySecureLinks(this js.Value, args []js.Value) interface{} {
 				elemets.Index(i).Set("rel", js.ValueOf(elemets.Index(i).Get("rel").String()+" noreferrer"))
 			}
 		}
-		js.Global().Get("console").Call("log", elemets.Index(i))
 	}
 	return nil
 }
