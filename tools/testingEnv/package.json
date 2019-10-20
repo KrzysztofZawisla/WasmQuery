@@ -1,0 +1,36 @@
+{
+  "name": "testingenv",
+  "version": "1.0.0",
+  "description": "Testing environment for WasmQuery",
+  "scripts": {
+    "compile": "tsc",
+    "server": "node ./server/index.js",
+    "server-dev": "nodemon ./server/index.js",
+    "test": "npm run compile && node ./bot/index.js",
+    "jest": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KrzysztofZawisla/WasmQuery.git"
+  },
+  "keywords": [
+    "WasmQuery"
+  ],
+  "author": "Krzysztof Zawisła, Szymon Bednorz",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/KrzysztofZawisla/WasmQuery/issues"
+  },
+  "homepage": "https://github.com/KrzysztofZawisla/WasmQuery#readme",
+  "dependencies": {
+    "@types/express": "^4.17.0",
+    "@types/jest": "^24.0.17",
+    "@types/node": "^12.7.2",
+    "@types/puppeteer": "^1.19.1",
+    "express": "^4.17.1",
+    "jest": "^24.9.0",
+    "pending-xhr-puppeteer": "^2.0.0",
+    "puppeteer": "^1.19.0",
+    "typescript": "^3.5.3"
+  }
+}

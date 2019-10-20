@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Document</title>
+      <script src="wasm_exec.js"></script>
+      <script>
+         async function run(fileUrl) {
+            try {
+                const file = await fetch(fileUrl);
+                const buffer = await file.arrayBuffer();
+                const go = new Go();
+                const { instance } = await WebAssembly.instantiate(buffer, go.importObject);
+                go.run(instance);
+				registerWasmQuery();
+            } catch (err) {
+                console.error(err);
+            }
+        }
+        setTimeout(() => run("http://localhost:8080/WasmQuery.wasm"));
+      </script>
+   </head>
+   <body>
+      Siema test
+	  <div class="klasa" id="A" style="height: 2cm;">AAAA</div>
+	  <div class="klasa" id="B" style="height: 10%;">BBBB</div>
+	  <div class="klasa" id="C">CCCC</div>
+   </body>
+</html>

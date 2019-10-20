@@ -1,0 +1,20 @@
+{
+   "compilerOptions": {
+      "module": "commonjs",
+      "target": "es6",
+      "noImplicitAny": true,
+      "removeComments": true,
+      "preserveConstEnums": true,
+      "strictNullChecks": true,
+      "sourceMap": true,
+      "allowJs": false,
+      "alwaysStrict": true
+   },
+   "include": [
+      "**/*"
+   ],
+   "exclude": [
+      "node_modules",
+      "tests"
+   ]
+}

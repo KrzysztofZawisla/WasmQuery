@@ -1,0 +1,43 @@
+Setupy i defery zrobione dla
+cryptoQuery
+hashQuery
+shortQuery
+timeQuery
+
+Sprawdzone i poprawione funkcje
+shortQuery
+WasmQueryAddClass - typy i funkcja
+WasmQueryAddClassForArray - typy i funkcja
+WasmQueryAttr - typy (bez kom) i funkcja
+WasmQueryAttrForArray - typy (bez kom) i funkcja
+
+timeQuery
+WasmQueryDay - typy (bez kom) i funkcja
+WasmQueryHour - typy (bez kom) i funkcja 
+WasmQueryMinute - typy (bez kom) i funkcja
+WasmQueryMonth - typy (bez kom) i funkcja
+WasmQueryNanosecond - typy (bez kom) i funkcja
+WasmQueryNow - typy (bez kom) i funkcja
+WasmQuerySeconds - typy (bez kom) i funkcja
+WasmQueryYear - typy (bez kom) i funkcja
+
+hashQuery
+WasmQueryAdler32 - typy (bez kom) i funkcja (bez checksum)
+WasmQueryFNV* - typy (bez kom) i funkcje
+
+cryptoQuery
+WasmQueryKeccak256 - typy (bez kom) i funkcja
+WasmQueryKeccak512 - typy (bez kom) i funkcja
+WasmQueryMD4 - typy (bez kom) i funkcja 
+WasmQueryMD5 - typy (bez kom) i funkcja 
+WasmQuerySHA1 - typy (bez kom) i funkcja 
+WasmQuerySHA224 - typy (bez kom) i funkcja 
+WasmQuerySHA512_214 - typy (bez kom) i funkcja 
+WasmQuerySHA384 - typy (bez kom) i funkcja 
+WasmQuerySHA512 - typy (bez kom) i funkcja 
+WasmQuerySHA512_256 - typy (bez kom) i funkcja 
+WasmQuerySHA3_* - typy (bez kom) i funkcje
+
+Dodać komy dla deklaracji attr
+
+Ogarnąć komy dla wszystkiego

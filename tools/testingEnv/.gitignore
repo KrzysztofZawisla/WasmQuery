@@ -1,0 +1,7 @@
+node_modules
+screens
+temp
+bot/index.js
+bot/index.js.map
+server/index.js
+server/index.js.map
