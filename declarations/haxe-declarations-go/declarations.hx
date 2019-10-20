@@ -1,0 +1,1 @@
+function registerWasmQuery(): String;
