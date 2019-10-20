@@ -1,0 +1,4 @@
+// @flow
+
+declare export function registerWasmQuery(): string;
+declare export function registerWasmQuery(selector): string;
