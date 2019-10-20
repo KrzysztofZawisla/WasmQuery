@@ -123,6 +123,7 @@ func WasmQueryRegisterLibrary(this js.Value, args []js.Value) interface{} {
 					js.Global().Get(args[0].Index(i).String()).Get("geolocation").Set("longitude", geolocationquery.WasmQueryFunctionsStorage["WasmQueryLongitude"])
 					js.Global().Get(args[0].Index(i).String()).Set("secure", js.ValueOf(emptyObject))
 					js.Global().Get(args[0].Index(i).String()).Get("secure").Set("secureLinks", securequery.WasmQueryFunctionsStorage["WasmQuerySecureLinks"])
+					js.Global().Get(args[0].Index(i).String()).Get("secure").Set("redirectToHTTPS", securequery.WasmQueryFunctionsStorage["WasmQueryRedirectToHTTPS"])
 					jsOutputArray.SetIndex(i, args[0].Index(i))
 				}
 			}
@@ -232,5 +233,6 @@ func WasmQueryRegisterLibrary(this js.Value, args []js.Value) interface{} {
 	js.Global().Get(symbol).Get("geolocation").Set("longitude", geolocationquery.WasmQueryFunctionsStorage["WasmQueryLongitude"])
 	js.Global().Get(symbol).Set("secure", js.ValueOf(emptyObject))
 	js.Global().Get(symbol).Get("secure").Set("secureLinks", securequery.WasmQueryFunctionsStorage["WasmQuerySecureLinks"])
+	js.Global().Get(symbol).Get("secure").Set("redirectToHTTPS", securequery.WasmQueryFunctionsStorage["WasmQueryRedirectToHTTPS"])
 	return js.ValueOf(symbol)
 }
