@@ -13,6 +13,6 @@ func WasmQueryLatitude(this js.Value, args []js.Value) interface{} {
 		}), js.FuncOf(func(this js.Value, args []js.Value) interface{} {
 			return promiseArgs[0].Invoke(args[0])
 		}))
-		return js.Null()
+		return js.Undefined()
 	}))
 }
