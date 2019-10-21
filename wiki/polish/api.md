@@ -480,7 +480,7 @@ await $.geolocation.longitude(): number | PositionError;
 Dostęp do modułu uzyskamy poprzez:
 
 ```ts
-$.secure;
+$.secure: Object;
 ```
 
 Moduł ten udostępnia funkcje które pozwolą lepiej zabezpieczyć twoją stronę internetową.  
