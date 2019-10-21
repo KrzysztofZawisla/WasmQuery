@@ -18,8 +18,6 @@ func WasmQueryRegisterLibrary(this js.Value, args []js.Value) interface{} {
 	emptyObject := make(map[string]interface{})
 	if len(args) > 0 {
 		if args[0].Type() == js.TypeObject {
-			var outputArray []interface{}
-			jsOutputArray := js.ValueOf(outputArray)
 			for i := 0; i < args[0].Length(); i++ {
 				if args[0].Index(i).Type() == js.TypeString {
 					js.Global().Set(args[0].Index(i).String(), shortquery.WasmQueryFunctionsStorage["WasmQuery"])
@@ -124,10 +122,9 @@ func WasmQueryRegisterLibrary(this js.Value, args []js.Value) interface{} {
 					js.Global().Get(args[0].Index(i).String()).Set("secure", js.ValueOf(emptyObject))
 					js.Global().Get(args[0].Index(i).String()).Get("secure").Set("secureLinks", securequery.WasmQueryFunctionsStorage["WasmQuerySecureLinks"])
 					js.Global().Get(args[0].Index(i).String()).Get("secure").Set("redirectToHTTPS", securequery.WasmQueryFunctionsStorage["WasmQueryRedirectToHTTPS"])
-					jsOutputArray.SetIndex(i, args[0].Index(i))
 				}
 			}
-			return jsOutputArray
+			return js.Undefined()
 		} else if args[0].Type() == js.TypeString {
 			symbol = args[0].String()
 		}
@@ -234,5 +231,5 @@ func WasmQueryRegisterLibrary(this js.Value, args []js.Value) interface{} {
 	js.Global().Get(symbol).Set("secure", js.ValueOf(emptyObject))
 	js.Global().Get(symbol).Get("secure").Set("secureLinks", securequery.WasmQueryFunctionsStorage["WasmQuerySecureLinks"])
 	js.Global().Get(symbol).Get("secure").Set("redirectToHTTPS", securequery.WasmQueryFunctionsStorage["WasmQueryRedirectToHTTPS"])
-	return js.ValueOf(symbol)
+	return js.Undefined()
 }

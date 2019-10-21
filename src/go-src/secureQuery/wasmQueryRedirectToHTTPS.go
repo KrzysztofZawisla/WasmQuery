@@ -13,6 +13,7 @@ func WasmQueryRedirectToHTTPS(this js.Value, args []js.Value) interface{} {
 	if isHTTP {
 		url = url.Call("replace", "http://", "https://")
 		js.Global().Get("window").Get("location").Set("href", url)
+		return js.ValueOf(true)
 	}
-	return js.Null()
+	return js.ValueOf(false)
 }

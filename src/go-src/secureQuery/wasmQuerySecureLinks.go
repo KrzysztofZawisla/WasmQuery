@@ -24,5 +24,5 @@ func WasmQuerySecureLinks(this js.Value, args []js.Value) interface{} {
 			}
 		}
 	}
-	return js.Null()
+	return js.Undefined()
 }
