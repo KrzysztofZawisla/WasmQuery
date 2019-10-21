@@ -94,7 +94,13 @@ Dostęp do modułu uzyskamy poprzez:
 $: Function;
 ```
 
-Moduł ten w dość mocnym stopniu wzoruje się na [jQuery](https://jquery.com/). Zasada działania jest podobna do wspomnianego już [jQuery](https://jquery.com/) lecz nie identyczna. Pozwoliliśmy sobie rozbudować ideę „Write Less, Do More” poprzez zmianę sposobu działania konstruktora. W ShortQuery konstruktor zwraca tablice elementów wraz ze swoimi funkcjami oraz dodaje dla każdego elementu z tablicy funkcję która jest odpowiednikiem wykonywanym na całym zbiorze czyli tablicy. W skrócie dzięki temu rozwiązaniu możemy wywoływać funkcje dla poszczególnych elementów w ten sposób `$("selektor")[indeks].funkcja();`. Poza tym w ShortQuery większość funkcji nie zwraca this tylko stan końcowy elementu co pozwala na przetwarzanie tej informacji dalej w kodzie. Dodatkowo zastąpiliśmy model łańcuchowych wykonań funkcji na operacje tablicowe co jeszcze bardziej pozwoliło skrócić ilość kodu. Dla przykładu nadanie trzem elementom o klasie `test` atrybutu `alt` oraz `src` nie wygląda:
+Moduł ten w dość mocnym stopniu wzoruje się na [jQuery](https://jquery.com/). Zasada działania jest podobna do wspomnianego już [jQuery](https://jquery.com/) lecz nie identyczna. Pozwoliliśmy sobie rozbudować ideę „Write Less, Do More” poprzez zmianę sposobu działania konstruktora. W ShortQuery konstruktor zwraca tablice elementów wraz ze swoimi funkcjami oraz dodaje dla każdego elementu z tablicy funkcję która jest odpowiednikiem wykonywanym na całym zbiorze czyli tablicy. W skrócie dzięki temu rozwiązaniu możemy wywoływać funkcje dla poszczególnych elementów w ten sposób:
+
+```ts
+$("selektor")[indeks].funkcja();
+```
+
+Dodatkowo zastąpiliśmy model łańcuchowych wykonań funkcji na operacje tablicowe co jeszcze bardziej pozwoliło skrócić ilość kodu. Dla przykładu nadanie trzem elementom o klasie `test` atrybutu `alt` oraz `src` nie wygląda tak:
 
 ```ts
 $(".test").attr("alt", "Nosacz Sundajski").attr("src", "https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Proboscis_Monkey.jpg/240px-Proboscis_Monkey.jpg");
