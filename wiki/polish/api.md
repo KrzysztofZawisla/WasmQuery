@@ -86,6 +86,28 @@ registerWasmQuery(["$", "wasmQuery", "test"]); // rejestruje bibliotekę pod wie
 
 ***
 
+## Obsługa błędów
+
+WebAssebmly nie dosponuje mechanizmem `try... catch` oraz `throw` więc dlatego wszystkie błędy są zwracane w postaci zwykłych wartości. Jeśli chcemy sprawdzić czy został zwrócony błąd to wykonamy porównanie do instancji `Error`:
+
+```ts
+const ourReturn = await $.geolocation.latitude();
+if(ourReturn instanceof Error) {
+    // mamy błąd
+}
+```
+
+Wersja dla tablic:
+
+```ts
+const ourReturn = $.math.abs([-12, -3, "test"]);
+for(let i = 0; i < ourReturn.length; i++) {
+    if(ourReturn[i] instanceof Error) {
+        // mamy błąd
+    }
+}
+```
+
 ## Moduł ShortQuery
 
 Dostęp do modułu uzyskamy poprzez:
