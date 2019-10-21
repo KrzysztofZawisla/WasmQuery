@@ -229,7 +229,7 @@ $.time.nanosecond(): string;
 Dostęp do modułu uzyskamy poprzez:
 
 ```ts
-$.crypto;
+$.crypto: Object;
 ```
 
 Moduł ten pozwala wykorzystanie popularnych algorytmów szyfrujących/haszujących.
@@ -371,7 +371,7 @@ Moduł ten pozwala wykorzystanie popularnych algorytmów haszujących.
 Funkcja ta tworzy hash adler32.
 
 ```ts
-$.crypto.adler32(value: string): string;
+$.hash.adler32(value: string): string;
 ```
 
 ### Funkcja fnv1_32
@@ -379,7 +379,7 @@ $.crypto.adler32(value: string): string;
 Funkcja ta tworzy hash fnv1_32.
 
 ```ts
-$.crypto.fnv1_32(value: string): string;
+$.hash.fnv1_32(value: string): string;
 ```
 
 ### Funkcja fnv1a_32
@@ -387,7 +387,7 @@ $.crypto.fnv1_32(value: string): string;
 Funkcja ta tworzy hash fnv1a_32.
 
 ```ts
-$.crypto.fnv1a_32(value: string): string;
+$.hash.fnv1a_32(value: string): string;
 ```
 
 ### Funkcja fnv1_64
@@ -395,7 +395,7 @@ $.crypto.fnv1a_32(value: string): string;
 Funkcja ta tworzy hash fnv1_64.
 
 ```ts
-$.crypto.fnv1_64(value: string): string;
+$.hash.fnv1_64(value: string): string;
 ```
 
 ### Funkcja fnv1a_64
@@ -403,7 +403,7 @@ $.crypto.fnv1_64(value: string): string;
 Funkcja ta tworzy hash fnv1a_64.
 
 ```ts
-$.crypto.fnv1a_64(value: string): string;
+$.hash.fnv1a_64(value: string): string;
 ```
 
 ### Funkcja fnv1_128
@@ -411,7 +411,7 @@ $.crypto.fnv1a_64(value: string): string;
 Funkcja ta tworzy hash fnv1_128.
 
 ```ts
-$.crypto.fnv1_128(value: string): string;
+$.hash.fnv1_128(value: string): string;
 ```
 
 ### Funkcja fnv1a_128
@@ -419,7 +419,7 @@ $.crypto.fnv1_128(value: string): string;
 Funkcja ta tworzy hash fnv1a_128.
 
 ```ts
-$.crypto.fnv1a_128(value: string): string;
+$.hash.fnv1a_128(value: string): string;
 ```
 
 ***
@@ -429,7 +429,7 @@ $.crypto.fnv1a_128(value: string): string;
 Dostęp do modułu uzyskamy poprzez:
 
 ```ts
-$.math;
+$.math: Object;
 ```
 
 Moduł ten udostępnia różne wartości i funkcje matematyczne.
@@ -450,7 +450,7 @@ $.math.abs([...values: number[]]): number[];
 Dostęp do modułu uzyskamy poprzez:
 
 ```ts
-$.geolocation;
+$.geolocation: Object;
 ```
 
 Moduł ten udostępnia informacje na temat geolokacji.
@@ -461,8 +461,7 @@ Funkcja ta zwraca szerokość geograficzną urządzenia na którym jest wykonywa
 
 ```ts
 $.geolocation.latitude(): Promise;
-await $.geolocation.latitude(): number;
-await $.geolocation.latitude(): PositionError;
+await $.geolocation.latitude(): number | PositionError;
 ```
 
 ### Funkcja longitude
@@ -471,8 +470,7 @@ Funkcja ta zwraca długość geograficzną urządzenia na którym jest wykonywan
 
 ```ts
 $.geolocation.longitude(): Promise;
-await $.geolocation.longitude(): number;
-await $.geolocation.longitude(): PositionError;
+await $.geolocation.longitude(): number | PositionError;
 ```
 
 ***
