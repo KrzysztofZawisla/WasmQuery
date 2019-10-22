@@ -400,6 +400,7 @@ Funkcja ta tworzy hash adler32.
 
 ```ts
 $.hash.adler32(value: string): string;
+$.hash.adler32(values: string[]): string[];
 ```
 
 ### Funkcja fnv1_32
