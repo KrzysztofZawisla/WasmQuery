@@ -29,6 +29,7 @@ func WasmQueryFNV1_32(this js.Value, args []js.Value) interface{} {
 					jsOutputArray.SetIndex(i, js.Global().Get("Error").New("Wrongly passed argument. Value have the wrong type: "+value.Index(i).Type().String()+". Expected: "+js.TypeString.String()+"."))
 				}
 			}
+			return jsOutputArray
 		}
 		return js.Global().Get("Error").New("Wrongly passed argument. Value have the wrong type: " + value.Type().String() + ". Expected: " + js.TypeString.String() + ".")
 	}
