@@ -409,6 +409,7 @@ Funkcja ta tworzy hash fnv1_32.
 
 ```ts
 $.hash.fnv1_32(value: string): string;
+$.hash.fnv1_32(values: string[]): string[];
 ```
 
 ### Funkcja fnv1a_32
