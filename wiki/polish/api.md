@@ -426,6 +426,7 @@ Funkcja ta tworzy hash fnv1_64.
 
 ```ts
 $.hash.fnv1_64(value: string): string;
+$.hash.fnv1_64(values: string[]): string[];
 ```
 
 ### Funkcja fnv1a_64
