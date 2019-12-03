@@ -1,5 +1,7 @@
+type checkWasmQueryError = <T>(value: T) => T;
+
 interface WasmQueryWindow extends Window {
-  checkWasmQueryError: Function;
+  checkWasmQueryError: checkWasmQueryError;
 }
 
 (window as WasmQueryWindow & typeof globalThis).checkWasmQueryError = <T>(value: T) => {
