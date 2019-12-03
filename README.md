@@ -13,11 +13,11 @@ Note: Library have problem with speed on chromium based browsers.
 ## Wiki
 https://github.com/KrzysztofZawisla/WasmQuery/wiki
 ## Working Environment
-Windows 10 Professional 64-bit version 1903 build 18362.356  
-Version of Golang: 1.12.9 windows/amd64  
+Windows 10 Professional 64-bit version 1909 build 18363.476  
+Version of Golang: 1.12.13 windows/amd64  
 Version of Python: 3.6.8 windows/amd64  
-Version of Node.js: 12.10.0 windows/amd64  
-Version of TypeScript: 3.6.3 windows/amd64  
+Version of Node.js: 12.13.0 windows/amd64  
+Version of TypeScript: 3.6.4 windows/amd64  
 Version of Flow: - windows/amd64
 ## Used packages
 encoding/hex  
