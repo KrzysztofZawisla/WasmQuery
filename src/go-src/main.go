@@ -15,6 +15,7 @@ import (
 
 func main() {
 	c := make(chan struct{}, 0)
+	defer close(c)
 	shortquery.SetUpFunctionsToVariables()
 	defer shortquery.WasmQueryReleaseMemory()
 	timequery.SetUpFunctionsToVariables()
@@ -29,7 +30,7 @@ func main() {
 	defer geolocationquery.WasmQueryReleaseMemory()
 	securequery.SetUpFunctionsToVariables()
 	defer securequery.WasmQueryReleaseMemory()
-	var WasmQueryRegisterLibrary = js.FuncOf(core.WasmQueryRegisterLibrary)
+	WasmQueryRegisterLibrary := js.FuncOf(core.WasmQueryRegisterLibrary)
 	js.Global().Set("registerWasmQuery", WasmQueryRegisterLibrary)
 	defer WasmQueryRegisterLibrary.Release()
 	<-c
