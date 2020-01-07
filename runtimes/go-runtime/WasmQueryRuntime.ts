@@ -1,7 +1,12 @@
-declare function runWasmQuery(): void;
-declare const global;
+interface WasmQueryGlobal extends Window {
+  checkWasmQueryError: checkWasmQueryError;
+  WasmQueryError: WasmQueryError;
+}
 
-type checkWasmQueryError = <T>(value: T) => T;
+declare function runWasmQuery(): void;
+declare const global: WasmQueryGlobal;
+
+type checkWasmQueryError = <T>(value: T) => T | undefined;
 type bindWasmQueryGlobal = () => void;
 
 let wasmQueryIntance;
@@ -33,5 +38,5 @@ const checkWasmQueryError: checkWasmQueryError = <T>(value: T) => {
 
 const bindWasmQueryGlobal: bindWasmQueryGlobal = (): void => {
   global.checkWasmQueryError = checkWasmQueryError;
-  global.WasmQueryError = WasmQueryError;
+  global.WasmQueryError = (WasmQueryError as any);
 }

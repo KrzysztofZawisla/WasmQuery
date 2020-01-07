@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "removeComments": true,
+    "sourceMap": true,
+    "strict": true,
+    "target": "esnext",
+    "module": "commonjs",
+    "alwaysStrict": true,
+    "esModuleInterop": true,
+    "lib": ["ES2018", "DOM"],
+    "strictNullChecks": true,
+    "noImplicitAny": true,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["**/node_modules"]
+}
