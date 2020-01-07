@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>WasmQueryTemplate</title>
+  <script src="wasm_exec.js"></script>
+  <script src="WasmQueryRuntime.js"></script>
+</head>
+<body>
+  <script>
+    if (!WebAssembly.instantiateStreaming) {
+      WebAssembly.instantiateStreaming = async (resp, importObject) => {
+        const source = await (await resp).arrayBuffer();
+        return await WebAssembly.instantiate(source, importObject);
+      };
+    }
+    const go = new Go();
+    WebAssembly.instantiateStreaming(fetch("WasmQuery.wasm"), go.importObject).then(async (result) => {
+      wasmQueryModule = result.module;
+      wasmQueryIntance = result.instance;
+      await runWasmQuery();
+    }).catch((err) => {
+      console.error(err);
+    });
+    async function runWasmQuery() {
+      global.WasmQueryError = WasmQueryError;
+      go.run(wasmQueryIntance);
+      registerWasmQuery();
+      /* Your code here */
+      wasmQueryIntance = await WebAssembly.instantiate(wasmQueryModule, go.importObject);
+    }
+  </script>
+</body>
+</html>
