@@ -10,11 +10,13 @@ func WasmQuery(this js.Value, args []js.Value) interface{} {
 		return nil
 	}
 	domSelector := args[0]
-	if domSelector == js.Global().Get("document") {
-		returnValue := args[0]
-		return returnValue
+	document := js.Global().Get("document")
+	if domSelector.Type() == js.TypeString {
+		if domSelector.String() == "document" {
+			return document
+		}
 	}
-	returnValue := js.Global().Get("document").Call("querySelectorAll", domSelector)
+	returnValue := document.Call("querySelectorAll", domSelector)
 	for i := 0; i < returnValue.Length(); i++ {
 		returnValue.Index(i).Set("on", WasmQueryFunctionsStorage["WasmQueryOn"])
 		returnValue.Index(i).Set("addClass", WasmQueryFunctionsStorage["WasmQueryAddClass"])
