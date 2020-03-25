@@ -8,7 +8,7 @@ import (
 	hashquery "github.com/KrzysztofZawisla/WasmQuery/hashQuery"
 	mathquery "github.com/KrzysztofZawisla/WasmQuery/mathQuery"
 	securequery "github.com/KrzysztofZawisla/WasmQuery/secureQuery"
-	"github.com/KrzysztofZawisla/WasmQuery/shortquery"
+	shortquery "github.com/KrzysztofZawisla/WasmQuery/shortQuery"
 	timequery "github.com/KrzysztofZawisla/WasmQuery/timeQuery"
 )
 
